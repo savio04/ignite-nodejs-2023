@@ -1,4 +1,5 @@
 import fastify from "fastify";
+import "./database";
 
 const app = fastify({
   // logger: true
