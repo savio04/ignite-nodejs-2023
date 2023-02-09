@@ -1,4 +1,5 @@
 import setupKnex from "knex";
+import { config } from "../config/env";
 
 declare module 'knex/types/tables' {
   interface Test {
@@ -12,7 +13,7 @@ declare module 'knex/types/tables' {
 
 export const knex = setupKnex({
   client: "pg",
-  connection: `${process.env.PG_URL}`,
+  connection: `${config.PG_URL}`,
 });
 
 

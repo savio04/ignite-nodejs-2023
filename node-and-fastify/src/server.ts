@@ -1,4 +1,5 @@
 import fastify from "fastify";
+import { config } from "./config/env";
 import "./database";
 
 const app = fastify({
@@ -10,7 +11,7 @@ app.get("/hello", async (request, response) => {
 });
 
 (async () => {
-  await app.listen({ port: 3001 });
-  console.log(`Api is runing on port ${3001}`);
+  await app.listen({ port: config.PORT });
+  console.log(`Api is runing on port ${config.PORT}`);
   // app.log.info(`Api is runing on port ${3001}`)
 })();
