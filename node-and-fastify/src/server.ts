@@ -1,14 +1,13 @@
 import fastify from "fastify";
 import { config } from "./config/env";
 import "./database";
+import { TransactionRoutes } from "./routes/transactions";
 
 const app = fastify({
   // logger: true
 });
 
-app.get("/hello", async (request, response) => {
-  return response.send("ok");
-});
+app.register(TransactionRoutes, { prefix: "transactions" });
 
 (async () => {
   await app.listen({ port: config.PORT });

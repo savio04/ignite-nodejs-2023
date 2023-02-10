@@ -1,13 +1,10 @@
 import setupKnex from "knex";
 import { config } from "../config/env";
+import { ITransaction } from "../modules/transactions/TransationModel";
 
 declare module 'knex/types/tables' {
-  interface Test {
-    name: string;
-  }
-  
   interface Tables {
-    test: Test;
+    transactions: ITransaction;
   }
 }
 
