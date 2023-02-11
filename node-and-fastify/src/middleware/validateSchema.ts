@@ -9,7 +9,7 @@ export function validate(schema: AnyZodObject) {
         query: request.query,
         params: request.params,
       });
-
+      
     } catch (error) {
       return response.send({ error })
     }

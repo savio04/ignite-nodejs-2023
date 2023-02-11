@@ -1,12 +1,5 @@
 import setupKnex from "knex";
 import { config } from "../config/env";
-import { ITransaction } from "../modules/transactions/TransationModel";
-
-declare module 'knex/types/tables' {
-  interface Tables {
-    transactions: ITransaction;
-  }
-}
 
 export const knex = setupKnex({
   client: "pg",
