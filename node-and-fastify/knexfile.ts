@@ -1,11 +1,10 @@
 import type { Knex } from "knex";
-
-// Update with your config settings.
+import { config as envConfig } from "./src/config/env";
 
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: "pg",
-    connection: `${process.env.PG_URL}`,
+    connection: `${envConfig.PG_URL}`,
     migrations: {
       extension: "ts",
       directory: "./src/database/migrations",

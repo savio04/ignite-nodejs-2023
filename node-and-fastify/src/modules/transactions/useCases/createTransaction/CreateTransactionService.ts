@@ -5,6 +5,7 @@ import crypto from "node:crypto";
 export interface IRequest {
   title: string;
   amount: number;
+  type: "CREDIT" | "DEBIT";
 }
 
 export class CreateTransactionService {
