@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { CreateTransactionController } from "../modules/transactions/useCases/createTransaction/CreateTransactionController";
 import { z } from "zod";
+import { knex } from "../database";
 
 const createTransactionSchema = z.object({
   title: z.string(),
@@ -9,7 +10,14 @@ const createTransactionSchema = z.object({
 })
 
 export async function TransactionRoutes(app: FastifyInstance) {
+  app.get("/", async (request, response) => {
+    const transactions = await knex("transactions").select("*")
+    
+    return transactions
+  })
+  
   const createTransactionController = new CreateTransactionController();
+  /**Seguindo padrão Controller > Service > Repository */
   app.post("/", {
     schema: {
       body: createTransactionSchema,
